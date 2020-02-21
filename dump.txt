@@ -1,0 +1,64 @@
+CREATE DATABASE `phonebook` /*!40100 COLLATE 'latin1_swedish_ci' */;
+SHOW DATABASES;
+/* Entrando a la sesión "Unnamed" */
+USE `phonebook`;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='phonebook';
+SHOW TABLE STATUS FROM `phonebook`;
+SHOW FUNCTION STATUS WHERE `Db`='phonebook';
+SHOW PROCEDURE STATUS WHERE `Db`='phonebook';
+SHOW TRIGGERS FROM `phonebook`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='phonebook';
+SHOW VARIABLES LIKE 'collation_database';
+CREATE TABLE `person` (
+	`id` INT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(50) NULL DEFAULT '0',
+	`surnames` VARCHAR(50) NULL DEFAULT '0'
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+/* Error de SQL (1075): Incorrect table definition; there can be only one auto column and it must be defined as a key */
+CREATE TABLE `person` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(50) NULL DEFAULT '0',
+	`surnames` VARCHAR(50) NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='phonebook';
+CREATE TABLE `phone` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`phone` VARCHAR(50) NULL DEFAULT '0',
+	`person_id` INT NULL DEFAULT '0',
+	PRIMARY KEY (`id`),
+	CONSTRAINT `FK__person` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='phonebook';
+SHOW TABLE STATUS FROM `phonebook`;
+SHOW FUNCTION STATUS WHERE `Db`='phonebook';
+SHOW PROCEDURE STATUS WHERE `Db`='phonebook';
+SHOW TRIGGERS FROM `phonebook`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='phonebook';
+SHOW CREATE TABLE `phonebook`.`phone`;
+/* Entrando a la sesión "Unnamed" */
+SHOW CREATE TABLE `phonebook`.`phone`;
+SHOW VARIABLES LIKE 'collation_database';
+SELECT 1 FROM `person` LIMIT 1;
+SHOW COLUMNS FROM `person`;
+SHOW CREATE TABLE `phonebook`.`person`;
+CREATE TABLE `email` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(50) NOT NULL DEFAULT '0',
+	`person_id` INT NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`),
+	CONSTRAINT `FK2` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='phonebook';
