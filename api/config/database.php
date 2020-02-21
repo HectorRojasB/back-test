@@ -2,10 +2,10 @@
 class Database{
  
     // specify your own database credentials
-    private $host = "localhost";
-    private $db_name = "phonebook";
-    private $username = "root";
-    private $password = "";
+    private $host = "sql10.freemysqlhosting.net";
+    private $db_name = "sql10324211";
+    private $username = "sql10324211";
+    private $password = "bGwMxCUry7";
     public $conn;
  
     // get the database connection
