@@ -1,7 +1,4 @@
 <?php
-
-echo "read";
-/*
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -67,6 +64,6 @@ else{
     echo json_encode(
         array("message" => "No contacts found.")
     );
-}*/
+}
 
 ?>
